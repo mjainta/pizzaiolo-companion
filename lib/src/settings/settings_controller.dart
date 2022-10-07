@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'settings_service.dart';
 
+import '../../auth/secrets.dart';
+
 /// A class that many Widgets can interact with to read user settings, update
 /// user settings, or listen to user settings changes.
 ///
@@ -16,15 +18,28 @@ class SettingsController with ChangeNotifier {
   // Make ThemeMode a private variable so it is not updated directly without
   // also persisting the changes with the SettingsService.
   late ThemeMode _themeMode;
-
   // Allow Widgets to read the user's preferred ThemeMode.
   ThemeMode get themeMode => _themeMode;
+
+  late String _pbBaseUrl;
+  String get pbBaseUrl => _pbBaseUrl;
+
+  late String _pbMail;
+  String get pbMail => _pbMail;
+
+  late String _pbPass;
+  String get pbPass => _pbPass;
 
   /// Load the user's settings from the SettingsService. It may load from a
   /// local database or the internet. The controller only knows it can load the
   /// settings from the service.
   Future<void> loadSettings() async {
     _themeMode = await _settingsService.themeMode();
+    _pbBaseUrl = const String.fromEnvironment('pbBaseUrl',
+        defaultValue: 'https://pocketbase.mjainta.de');
+    _pbMail = const String.fromEnvironment('pbMail',
+        defaultValue: 'pizzaiolo_companion@mjainta.de');
+    _pbPass = pocketbasePass;
 
     // Important! Inform listeners a change has occurred.
     notifyListeners();
