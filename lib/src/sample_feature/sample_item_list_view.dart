@@ -6,8 +6,7 @@ import '../settings/settings_controller.dart';
 import 'sample_item.dart';
 import 'sample_item_details_view.dart';
 
-/// Displays a list of SampleItems.
-class SampleItemListView extends StatelessWidget {
+class SampleItemListView extends StatefulWidget {
   const SampleItemListView(
       {super.key,
       this.items = const [SampleItem(1), SampleItem(2), SampleItem(3)],
@@ -20,6 +19,11 @@ class SampleItemListView extends StatelessWidget {
   final List<SampleItem> items;
 
   @override
+  _State createState() => _State();
+}
+
+class _State extends State<SampleItemListView> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -28,9 +32,9 @@ class SampleItemListView extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () async {
-              final client = PocketBase(settingsController.pbBaseUrl);
-              await client.users.authViaEmail(
-                  settingsController.pbMail, settingsController.pbPass);
+              final client = PocketBase(widget.settingsController.pbBaseUrl);
+              await client.users.authViaEmail(widget.settingsController.pbMail,
+                  widget.settingsController.pbPass);
               var records = await client.records.getFullList('pizza_recipes');
               print(records);
               // Navigate to the settings page. If the user leaves and returns
@@ -53,9 +57,9 @@ class SampleItemListView extends StatelessWidget {
         // scroll position when a user leaves and returns to the app after it
         // has been killed while running in the background.
         restorationId: 'sampleItemListView',
-        itemCount: items.length,
+        itemCount: widget.items.length,
         itemBuilder: (BuildContext context, int index) {
-          final item = items[index];
+          final item = widget.items[index];
 
           return ListTile(
               title: Text('SampleItem ${item.id}'),
