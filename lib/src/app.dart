@@ -6,15 +6,18 @@ import 'sample_feature/sample_item_details_view.dart';
 import 'sample_feature/sample_item_list_view.dart';
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
+import 'services/repository.dart';
 
 /// The Widget that configures your application.
 class MyApp extends StatelessWidget {
   const MyApp({
     super.key,
     required this.settingsController,
+    required this.repository,
   });
 
   final SettingsController settingsController;
+  final Repository repository;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +77,8 @@ class MyApp extends StatelessWidget {
                   case SampleItemListView.routeName:
                   default:
                     return SampleItemListView(
-                        settingsController: settingsController);
+                        settingsController: settingsController,
+                        repository: repository);
                 }
               },
             );
