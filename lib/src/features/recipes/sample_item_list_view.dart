@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:pizzaiolo_companion/src/classes/recipe.dart';
+import 'package:pizzaiolo_companion/src/services/repository.dart';
 import 'package:pocketbase/pocketbase.dart';
 
-import '../classes/recipe.dart';
-import '../services/repository.dart';
 import '../settings/settings_controller.dart';
 import '../settings/settings_view.dart';
 import 'sample_item_details_view.dart';

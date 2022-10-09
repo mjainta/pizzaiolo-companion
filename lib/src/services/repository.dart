@@ -1,6 +1,6 @@
 import 'package:pizzaiolo_companion/src/classes/recipe.dart';
+import 'package:pizzaiolo_companion/src/features/settings/settings_controller.dart';
 import 'package:pocketbase/pocketbase.dart';
-import '../settings/settings_controller.dart';
 
 class Repository {
   Repository({required this.settingsController});
@@ -14,7 +14,8 @@ class Repository {
   }
 
   Future<List<Recipe>> getRecipes() async {
-    Future<List<RecordModel>> records = client.records.getFullList('pizza_recipes');
+    Future<List<RecordModel>> records =
+        client.records.getFullList('pizza_recipes');
     return records.then((records) {
       List<Recipe> recipes = [];
       for (var record in records) {
