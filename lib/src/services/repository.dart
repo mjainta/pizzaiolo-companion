@@ -1,3 +1,4 @@
+import 'package:pizzaiolo_companion/src/classes/recipe.dart';
 import 'package:pocketbase/pocketbase.dart';
 import '../settings/settings_controller.dart';
 
@@ -12,9 +13,14 @@ class Repository {
         .authViaEmail(settingsController.pbMail, settingsController.pbPass);
   }
 
-  Future<List<RecordModel>> getRecipes() async {
-    var records = client.records.getFullList('pizza_recipes');
-    print(records);
-    return records;
+  Future<List<Recipe>> getRecipes() async {
+    Future<List<RecordModel>> records = client.records.getFullList('pizza_recipes');
+    return records.then((records) {
+      List<Recipe> recipes = [];
+      for (var record in records) {
+        recipes.add(Recipe.fromRecord(record));
+      }
+      return recipes;
+    });
   }
 }

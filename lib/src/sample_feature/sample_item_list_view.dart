@@ -30,10 +30,10 @@ class SampleItemListView extends StatefulWidget {
 class _State extends State<SampleItemListView> {
   @override
   Widget build(BuildContext context) {
-    List<RecordModel>? myItems = [];
+    List<Recipe>? myItems = [];
     return FutureBuilder(
         future: widget.repository.getRecipes(),
-        builder: (context, AsyncSnapshot<List<RecordModel>> snapshot) {
+        builder: (context, AsyncSnapshot<List<Recipe>> snapshot) {
           if (snapshot.hasData) {
             myItems = snapshot.data;
             return Scaffold(
@@ -66,8 +66,7 @@ class _State extends State<SampleItemListView> {
                 restorationId: 'sampleItemListView',
                 itemCount: myItems!.length,
                 itemBuilder: (BuildContext context, int index) {
-                  final item = myItems![index];
-                  final recipe = Recipe.fromRecord(item);
+                  final recipe = myItems![index];
 
                   return ListTile(
                       title: Text(recipe.name),
