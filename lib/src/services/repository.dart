@@ -24,4 +24,14 @@ class Repository {
       return recipes;
     });
   }
+
+  void addRecipe(Recipe recipe) async {
+    final body = <String, dynamic>{
+      'name': recipe.name,
+      'ball_no': recipe.ballNo,
+      'poolish_ingredients': recipe.poolishIngredients,
+      'dough_ingredients': recipe.doughIngredients
+    };
+    await client.records.create('pizza_recipes', body: body);
+  }
 }

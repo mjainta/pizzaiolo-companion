@@ -1,17 +1,16 @@
-import 'dart:ffi';
-
-import 'package:pocketbase/pocketbase.dart';
-
 class Recipe {
-  Recipe.fromRecord(this._record);
+  late String name;
+  late int ballNo;
+  late Map<String, dynamic> poolishIngredients;
+  late Map<String, dynamic> doughIngredients;
 
-  late final Map<String, dynamic> _data = _record.data;
-
-  final RecordModel _record;
-
-  late final String name = _data['name'];
-  late final int ballNo = _data['ball_no'];
-  late final Map<String, dynamic> poolishIngredients =
-      _data['poolish_ingredients'];
-  late final Map<String, dynamic> doughIngredients = _data['dough_ingredients'];
+  Recipe.fromRecord(record) {
+    Map<String, dynamic> data = record.data;
+    name = data['name'];
+    ballNo = data['ball_no'];
+    poolishIngredients = data['poolish_ingredients'];
+    doughIngredients = data['dough_ingredients'];
+  }
+  Recipe.fromValues(
+      this.name, this.ballNo, this.poolishIngredients, this.doughIngredients);
 }
