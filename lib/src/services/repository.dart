@@ -24,4 +24,22 @@ class Repository {
       return recipes;
     });
   }
+
+  void addRecipe(Recipe recipe) async {
+    final body = <String, dynamic>{
+      'name': recipe.name,
+      'ball_no': recipe.ballNo,
+      'poolish_flour_gr': recipe.poolishFlourGr,
+      'poolish_water_ml': recipe.poolishWaterMl,
+      'poolish_honey_gr': recipe.poolishHoneyGr,
+      'poolish_yeast_grr': recipe.poolishYeastGr,
+      'dough_flour_gr': recipe.doughFlourGr,
+      'dough_water_ml': recipe.doughWaterMl,
+      'dough_salt_gr': recipe.doughSaltGr,
+      'dough_oil_gr': recipe.doughOilGr,
+      'poolish_additional_ingredients': recipe.poolishAdditionalIng,
+      'dough_additional_ingredients': recipe.doughAdditionalIng,
+    };
+    await client.records.create('pizza_recipes', body: body);
+  }
 }

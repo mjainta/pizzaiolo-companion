@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizzaiolo_companion/src/classes/recipe.dart';
+import 'package:pizzaiolo_companion/src/features/recipes/recipe_add_view.dart';
 import 'package:pizzaiolo_companion/src/services/repository.dart';
 import 'package:pocketbase/pocketbase.dart';
 
@@ -89,7 +90,7 @@ class _State extends State<SampleItemListView> {
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () {
-                print('Switch to "new recipe" feature');
+                Navigator.restorablePushNamed(context, RecipeAddView.routeName);
               },
               child: const Icon(Icons.add),
             ),
