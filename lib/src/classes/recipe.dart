@@ -15,18 +15,18 @@ class Recipe {
   Recipe.fromRecord(record) {
     Map<String, dynamic> data = record.data;
     name = data['name'];
-    ballNo = data['ball_no'];
+    ballNo = data['ball_no'] ?? 1;
 
-    poolishFlourGr = data['poolish_flour_gr'];
-    poolishWaterMl = data['poolish_water_ml'];
-    poolishHoneyGr = data['poolish_honey_gr'];
-    poolishYeastGr = data['poolish_yeast_grr'];
-    doughFlourGr = data['dough_flour_gr'];
-    doughWaterMl = data['dough_water_ml'];
-    doughSaltGr = data['dough_salt_gr'];
-    doughOilGr = data['dough_oil_gr'];
-    poolishAdditionalIng = data['poolish_additional_ingredients'];
-    doughAdditionalIng = data['dough_additional_ingredients'];
+    poolishFlourGr = data['poolish_flour_gr'] ?? 0;
+    poolishWaterMl = data['poolish_water_ml'] ?? 0;
+    poolishHoneyGr = data['poolish_honey_gr'] ?? 0;
+    poolishYeastGr = data['poolish_yeast_grr'] ?? 0;
+    doughFlourGr = data['dough_flour_gr'] ?? 0;
+    doughWaterMl = data['dough_water_ml'] ?? 0;
+    doughSaltGr = data['dough_salt_gr'] ?? 0;
+    doughOilGr = data['dough_oil_gr'] ?? 0;
+    poolishAdditionalIng = data['poolish_additional_ingredients'] ?? '';
+    doughAdditionalIng = data['dough_additional_ingredients'] ?? '';
   }
   Recipe.fromValues(
       this.name,
