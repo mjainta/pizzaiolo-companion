@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:pizzaiolo_companion/src/features/recipes/recipe_add_view.dart';
-import 'package:pizzaiolo_companion/src/features/recipes/sample_item_details_view.dart';
+import 'package:pizzaiolo_companion/src/features/recipes/recipe_detail_view.dart';
 import 'package:pizzaiolo_companion/src/features/recipes/sample_item_list_view.dart';
 import 'package:pizzaiolo_companion/src/features/settings/settings_controller.dart';
 import 'package:pizzaiolo_companion/src/features/settings/settings_view.dart';
@@ -73,8 +73,8 @@ class MyApp extends StatelessWidget {
                 switch (routeSettings.name) {
                   case SettingsView.routeName:
                     return SettingsView(controller: settingsController);
-                  case SampleItemDetailsView.routeName:
-                    return const SampleItemDetailsView();
+                  case RecipeDetailView.routeName:
+                    return const RecipeDetailView();
                   case RecipeAddView.routeName:
                     return RecipeAddView(repository: repository);
                   case SampleItemListView.routeName:
