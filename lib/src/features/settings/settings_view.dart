@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizzaiolo_companion/src/components/icon_attribution.dart';
 
 import 'settings_controller.dart';
 
@@ -25,23 +26,52 @@ class SettingsView extends StatelessWidget {
         //
         // When a user selects a theme from the dropdown list, the
         // SettingsController is updated, which rebuilds the MaterialApp.
-        child: DropdownButton<ThemeMode>(
-          // Read the selected themeMode from the controller
-          value: controller.themeMode,
-          // Call the updateThemeMode method any time the user selects a theme.
-          onChanged: controller.updateThemeMode,
-          items: const [
-            DropdownMenuItem(
-              value: ThemeMode.system,
-              child: Text('System Theme'),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            DropdownButton<ThemeMode>(
+              // Read the selected themeMode from the controller
+              value: controller.themeMode,
+              // Call the updateThemeMode method any time the user selects a theme.
+              onChanged: controller.updateThemeMode,
+              items: const [
+                DropdownMenuItem(
+                  value: ThemeMode.system,
+                  child: Text('System Theme'),
+                ),
+                DropdownMenuItem(
+                  value: ThemeMode.light,
+                  child: Text('Light Theme'),
+                ),
+                DropdownMenuItem(
+                  value: ThemeMode.dark,
+                  child: Text('Dark Theme'),
+                )
+              ],
             ),
-            DropdownMenuItem(
-              value: ThemeMode.light,
-              child: Text('Light Theme'),
+            const Divider(height: 8, thickness: 0),
+            Expanded(child: Container()),
+            const IconAttribution(
+              authorName: 'surang',
+              authorUrl: 'https://www.flaticon.com/authors/surang',
+              iconPaths: [
+                'assets/images/icons/salt.png',
+                'assets/images/icons/yeast.png',
+              ],
             ),
-            DropdownMenuItem(
-              value: ThemeMode.dark,
-              child: Text('Dark Theme'),
+            const Divider(
+              height: 4,
+              thickness: 0,
+            ),
+            const IconAttribution(
+              authorName: 'Freepik',
+              authorUrl: 'https://www.flaticon.com/authors/freepik',
+              iconPaths: [
+                'assets/images/icons/flour.png',
+                'assets/images/icons/water-drop.png',
+                'assets/images/icons/honey.png',
+                'assets/images/icons/olive-oil.png',
+              ],
             )
           ],
         ),

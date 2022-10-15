@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:pizzaiolo_companion/src/classes/recipe.dart';
 import 'package:pizzaiolo_companion/src/features/recipes/recipe_add_view.dart';
+import 'package:pizzaiolo_companion/src/features/recipes/recipe_detail_view_arguments.dart';
 import 'package:pizzaiolo_companion/src/services/repository.dart';
 import 'package:pocketbase/pocketbase.dart';
 
 import '../settings/settings_controller.dart';
 import '../settings/settings_view.dart';
-import 'sample_item_details_view.dart';
+import 'recipe_detail_view.dart';
 
 class SampleItemListView extends StatefulWidget {
   const SampleItemListView({
@@ -80,10 +81,8 @@ class _State extends State<SampleItemListView> {
                     // Navigate to the details page. If the user leaves and returns to
                     // the app after it has been killed while running in the
                     // background, the navigation stack is restored.
-                    Navigator.restorablePushNamed(
-                      context,
-                      SampleItemDetailsView.routeName,
-                    );
+                    Navigator.pushNamed(context, RecipeDetailView.routeName,
+                        arguments: RecipeDetailViewArguments(recipe));
                   },
                 );
               },
