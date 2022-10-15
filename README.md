@@ -20,6 +20,15 @@ include with your application.
 The `assets/images` directory contains [resolution-aware
 images](https://flutter.dev/docs/development/ui/assets-and-images#resolution-aware).
 
+### Icon sources
+
+- [flour.png](assets/images/icons/flour.png): https://www.flaticon.com/free-icon/flour_1182154
+- [water-drop.png](assets/images/icons/water-drop.png): https://www.flaticon.com/free-icon/water-drop_3105807
+- [honey.png](assets/images/icons/honey.png): https://www.flaticon.com/free-icon/honey_2770763
+- [yeast.png](assets/images/icons/yeast.png): https://www.flaticon.com/free-icon/yeast_5900694
+- [salt.png](assets/images/icons/salt.png): https://www.flaticon.com/free-icon/salt_6074851
+- [olive-oil.png](assets/images/icons/olive-oil.png): https://www.flaticon.com/free-icon/olive-oil_4264676
+
 ## Localization
 
 This project generates localized messages based on arb files found in
