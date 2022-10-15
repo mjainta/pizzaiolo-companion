@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pizzaiolo_companion/src/components/icon_attribution.dart';
 
 import 'settings_controller.dart';
 
@@ -26,6 +27,7 @@ class SettingsView extends StatelessWidget {
         // When a user selects a theme from the dropdown list, the
         // SettingsController is updated, which rebuilds the MaterialApp.
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             DropdownButton<ThemeMode>(
               // Read the selected themeMode from the controller
@@ -47,6 +49,30 @@ class SettingsView extends StatelessWidget {
                 )
               ],
             ),
+            const Divider(height: 8, thickness: 0),
+            Expanded(child: Container()),
+            const IconAttribution(
+              authorName: 'surang',
+              authorUrl: 'https://www.flaticon.com/authors/surang',
+              iconPaths: [
+                'assets/images/icons/salt.png',
+                'assets/images/icons/yeast.png',
+              ],
+            ),
+            const Divider(
+              height: 4,
+              thickness: 0,
+            ),
+            const IconAttribution(
+              authorName: 'Freepik',
+              authorUrl: 'https://www.flaticon.com/authors/freepik',
+              iconPaths: [
+                'assets/images/icons/flour.png',
+                'assets/images/icons/water-drop.png',
+                'assets/images/icons/honey.png',
+                'assets/images/icons/olive-oil.png',
+              ],
+            )
           ],
         ),
       ),
