@@ -17,28 +17,29 @@ class RecipeDetailCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        margin: const EdgeInsets.symmetric(
-          vertical: 4,
-          horizontal: 0,
+      margin: const EdgeInsets.symmetric(
+        vertical: 4,
+        horizontal: 0,
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Row(
+          children: [
+            iconImage,
+            const VerticalDivider(
+              width: 8,
+            ),
+            Column(
+              // Align text to the left
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(name),
+                Text('$amount $amountUnit'),
+              ],
+            )
+          ],
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Row(
-            children: [
-              iconImage,
-              const VerticalDivider(
-                width: 8,
-              ),
-              Column(
-                // Align text to the left
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(name),
-                  Text('$amount $amountUnit'),
-                ],
-              )
-            ],
-          ),
-        ));
+      ),
+    );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizzaiolo_companion/src/features/recipes/recipe_detail_card.dart';
+import 'package:pizzaiolo_companion/src/features/recipes/recipe_detail_log_entry.dart';
 import 'package:pizzaiolo_companion/src/features/recipes/recipe_detail_view_arguments.dart';
 
 /// Displays detailed information about a SampleItem.
@@ -138,14 +139,31 @@ class RecipeDetailView extends StatelessWidget {
                 height: 40,
                 thickness: 0,
               ),
-              const Text('Pizza logs for this recipe:'),
+              Text(
+                'Pizza logs for this recipe:',
+                style: textTheme.subtitle1,
+              ),
               const Divider(
                 height: 10,
                 thickness: 0,
               ),
-              const Text('Log 1 2022-10-09'),
-              const Text('Log 2 2022-10-14'),
-              const Text('Log 3 2022-11-02'),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: const [
+                  RecipeDetailLogEntry(
+                    date: '2022-10-09',
+                    icon: Icon(Icons.thumb_up),
+                  ),
+                  RecipeDetailLogEntry(
+                    date: '2022-10-14',
+                    icon: Icon(Icons.thumb_down),
+                  ),
+                  RecipeDetailLogEntry(
+                    date: '2022-11-02',
+                    icon: Icon(Icons.thumb_up),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
