@@ -71,8 +71,34 @@ class SettingsView extends StatelessWidget {
                 'assets/images/icons/water-drop.png',
                 'assets/images/icons/honey.png',
                 'assets/images/icons/olive-oil.png',
+                'assets/images/icons/pencil.png',
+                'assets/images/icons/taste.png',
+                'assets/images/icons/roller.png',
               ],
-            )
+            ),
+            const Divider(
+              height: 4,
+              thickness: 0,
+            ),
+            const IconAttribution(
+              authorName: 'amonrat rungreangfangsai',
+              authorUrl:
+                  'https://www.flaticon.com/authors/amonrat-rungreangfangsai',
+              iconPaths: [
+                'assets/images/icons/ferment.png',
+              ],
+            ),
+            const Divider(
+              height: 4,
+              thickness: 0,
+            ),
+            const IconAttribution(
+              authorName: 'Flat Icons',
+              authorUrl: 'https://www.flaticon.com/authors/flat-icons',
+              iconPaths: [
+                'assets/images/icons/calendar.png',
+              ],
+            ),
           ],
         ),
       ),

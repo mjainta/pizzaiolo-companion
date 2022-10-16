@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizzaiolo_companion/src/classes/recipe.dart';
+import 'package:pizzaiolo_companion/src/features/logs/logs_item_list_view.dart';
 import 'package:pizzaiolo_companion/src/features/recipes/recipe_add_view.dart';
 import 'package:pizzaiolo_companion/src/features/recipes/recipe_detail_view_arguments.dart';
 import 'package:pizzaiolo_companion/src/services/repository.dart';
@@ -49,6 +50,16 @@ class _State extends State<SampleItemListView> {
                     // background, the navigation stack is restored.
                     Navigator.restorablePushNamed(
                         context, SettingsView.routeName);
+                  },
+                ),
+                IconButton(
+                  icon: const Icon(Icons.list),
+                  onPressed: () async {
+                    // Navigate to the settings page. If the user leaves and returns
+                    // to the app after it has been killed while running in the
+                    // background, the navigation stack is restored.
+                    Navigator.restorablePushNamed(
+                        context, LogsItemListView.routeName);
                   },
                 ),
               ],
