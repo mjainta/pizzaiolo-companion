@@ -1,3 +1,5 @@
+import 'package:pizzaiolo_companion/src/classes/log.dart';
+
 class Recipe {
   late String name;
   late int ballNo;
@@ -11,6 +13,8 @@ class Recipe {
   late int doughOilGr;
   late String poolishAdditionalIng;
   late String doughAdditionalIng;
+
+  List<Log> logs = [];
 
   Recipe.fromRecord(record) {
     Map<String, dynamic> data = record.data;

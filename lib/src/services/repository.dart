@@ -17,10 +17,12 @@ class Repository {
   Future<List<Recipe>> getRecipes() async {
     Future<List<RecordModel>> records =
         client.records.getFullList('pizza_recipes');
-    return records.then((records) {
+    return records.then((records) async {
       List<Recipe> recipes = [];
       for (var record in records) {
-        recipes.add(Recipe.fromRecord(record));
+        Recipe recipe = Recipe.fromRecord(record);
+        recipe.logs = await getLogs();
+        recipes.add(recipe);
       }
       return recipes;
     });
@@ -46,7 +48,7 @@ class Repository {
 
   Future<List<Log>> getLogs() async {
     Future<List<Log>> logs = Future.delayed(
-      const Duration(seconds: 2),
+      const Duration(milliseconds: 100),
       () => [
         Log.fromValues(
           DateTime.parse('2022-10-19 19:13:17'),
