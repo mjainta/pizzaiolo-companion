@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizzaiolo_companion/src/classes/log.dart';
+import 'package:pizzaiolo_companion/src/features/logs/log_tile.dart';
 import 'package:pizzaiolo_companion/src/features/recipes/recipe_add_view.dart';
 import 'package:pizzaiolo_companion/src/services/repository.dart';
 import 'package:pocketbase/pocketbase.dart';
@@ -66,49 +67,7 @@ class _State extends State<LogsItemListView> {
               itemCount: logs!.length,
               itemBuilder: (BuildContext context, int index) {
                 final Log log = logs![index];
-
-                return ListTile(
-                  leading: ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      minWidth: 44,
-                      minHeight: 44,
-                      maxWidth: 64,
-                      maxHeight: 64,
-                    ),
-                    child: Image.asset(
-                      'assets/images/icons/calendar.png',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  title: Text(
-                      '${log.created.year}-${log.created.month}-${log.created.day}'),
-                  subtitle: Text(
-                      'Taste: ${log.ratingTaste}\nProcessability: ${log.ratingProcessability}, Fluffyness: ${log.ratingFluffyness}'),
-                  // trailing: Text(
-                  //     'Total rating: ${((log.ratingTaste + log.ratingProcessability + log.ratingFluffyness) / 3).toStringAsFixed(1)}'),
-                  trailing: ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      minWidth: 44,
-                      minHeight: 44,
-                      maxWidth: 64,
-                      maxHeight: 64,
-                    ),
-                    child: Column(
-                      children: [
-                        const Icon(Icons.sports_score),
-                        Text(((log.ratingTaste +
-                                    log.ratingProcessability +
-                                    log.ratingFluffyness) /
-                                3)
-                            .toStringAsFixed(1)),
-                      ],
-                    ),
-                  ),
-                  isThreeLine: true,
-                  onTap: () {
-                    print('"Move to Log Detail View" Placeholder Message');
-                  },
-                );
+                return LogTile(log: log);
               },
             ),
             floatingActionButton: FloatingActionButton(
