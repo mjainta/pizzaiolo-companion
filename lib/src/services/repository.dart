@@ -1,3 +1,4 @@
+import 'package:pizzaiolo_companion/src/classes/log.dart';
 import 'package:pizzaiolo_companion/src/classes/recipe.dart';
 import 'package:pizzaiolo_companion/src/features/settings/settings_controller.dart';
 import 'package:pocketbase/pocketbase.dart';
@@ -16,10 +17,12 @@ class Repository {
   Future<List<Recipe>> getRecipes() async {
     Future<List<RecordModel>> records =
         client.records.getFullList('pizza_recipes');
-    return records.then((records) {
+    return records.then((records) async {
       List<Recipe> recipes = [];
       for (var record in records) {
-        recipes.add(Recipe.fromRecord(record));
+        Recipe recipe = Recipe.fromRecord(record);
+        recipe.logs = await getLogs();
+        recipes.add(recipe);
       }
       return recipes;
     });
@@ -41,5 +44,48 @@ class Repository {
       'dough_additional_ingredients': recipe.doughAdditionalIng,
     };
     await client.records.create('pizza_recipes', body: body);
+  }
+
+  Future<List<Log>> getLogs() async {
+    Future<List<Log>> logs = Future.delayed(
+      const Duration(milliseconds: 100),
+      () => [
+        Log.fromValues(
+          DateTime.parse('2022-10-19 19:13:17'),
+          18,
+          1,
+          'none',
+          'medium',
+          2,
+          3,
+          2,
+          'overall good experience',
+        ),
+        Log.fromValues(
+          DateTime.parse('2022-10-19 19:13:17'),
+          24,
+          1,
+          '',
+          'high',
+          1,
+          5,
+          3,
+          '',
+        ),
+        Log.fromValues(
+          DateTime.parse('2022-10-19 19:13:17'),
+          12,
+          1,
+          'none',
+          'small',
+          2,
+          3,
+          2,
+          'overall good experience',
+        ),
+      ],
+    );
+
+    return logs;
   }
 }

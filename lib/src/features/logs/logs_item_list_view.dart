@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:pizzaiolo_companion/src/classes/recipe.dart';
-import 'package:pizzaiolo_companion/src/features/logs/logs_item_list_view.dart';
+import 'package:pizzaiolo_companion/src/classes/log.dart';
+import 'package:pizzaiolo_companion/src/features/logs/log_tile.dart';
 import 'package:pizzaiolo_companion/src/features/recipes/recipe_add_view.dart';
-import 'package:pizzaiolo_companion/src/features/recipes/recipe_detail_view_arguments.dart';
 import 'package:pizzaiolo_companion/src/services/repository.dart';
 import 'package:pocketbase/pocketbase.dart';
 
 import '../settings/settings_controller.dart';
 import '../settings/settings_view.dart';
-import 'recipe_detail_view.dart';
 
-class SampleItemListView extends StatefulWidget {
-  const SampleItemListView({
+class LogsItemListView extends StatefulWidget {
+  const LogsItemListView({
     super.key,
     this.items = const [],
     required this.settingsController,
@@ -21,7 +19,7 @@ class SampleItemListView extends StatefulWidget {
   final SettingsController settingsController;
   final Repository repository;
 
-  static const routeName = '/';
+  static const routeName = '/log/list';
 
   final List<RecordModel> items;
 
@@ -29,15 +27,15 @@ class SampleItemListView extends StatefulWidget {
   _State createState() => _State();
 }
 
-class _State extends State<SampleItemListView> {
+class _State extends State<LogsItemListView> {
   @override
   Widget build(BuildContext context) {
-    List<Recipe>? myItems = [];
+    List<Log>? logs = [];
     return FutureBuilder(
-      future: widget.repository.getRecipes(),
-      builder: (context, AsyncSnapshot<List<Recipe>> snapshot) {
+      future: widget.repository.getLogs(),
+      builder: (context, AsyncSnapshot<List<Log>> snapshot) {
         if (snapshot.hasData) {
-          myItems = snapshot.data;
+          logs = snapshot.data;
           return Scaffold(
             appBar: AppBar(
               title: const Text('Recipes'),
@@ -50,16 +48,6 @@ class _State extends State<SampleItemListView> {
                     // background, the navigation stack is restored.
                     Navigator.restorablePushNamed(
                         context, SettingsView.routeName);
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(Icons.list),
-                  onPressed: () async {
-                    // Navigate to the settings page. If the user leaves and returns
-                    // to the app after it has been killed while running in the
-                    // background, the navigation stack is restored.
-                    Navigator.restorablePushNamed(
-                        context, LogsItemListView.routeName);
                   },
                 ),
               ],
@@ -75,27 +63,11 @@ class _State extends State<SampleItemListView> {
               // Providing a restorationId allows the ListView to restore the
               // scroll position when a user leaves and returns to the app after it
               // has been killed while running in the background.
-              restorationId: 'sampleItemListView',
-              itemCount: myItems!.length,
+              restorationId: 'logListView',
+              itemCount: logs!.length,
               itemBuilder: (BuildContext context, int index) {
-                final recipe = myItems![index];
-
-                return ListTile(
-                  title: Text(recipe.name),
-                  leading: const CircleAvatar(
-                    // Display the Flutter Logo image asset.
-                    foregroundImage:
-                        AssetImage('assets/images/flutter_logo.png'),
-                  ),
-                  trailing: Text('For ${recipe.ballNo} dough balls'),
-                  onTap: () {
-                    // Navigate to the details page. If the user leaves and returns to
-                    // the app after it has been killed while running in the
-                    // background, the navigation stack is restored.
-                    Navigator.pushNamed(context, RecipeDetailView.routeName,
-                        arguments: RecipeDetailViewArguments(recipe));
-                  },
-                );
+                final Log log = logs![index];
+                return LogTile(log: log);
               },
             ),
             floatingActionButton: FloatingActionButton(
