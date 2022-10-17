@@ -68,80 +68,44 @@ class _State extends State<LogsItemListView> {
                 final Log log = logs![index];
 
                 return ListTile(
+                  leading: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      minWidth: 44,
+                      minHeight: 44,
+                      maxWidth: 64,
+                      maxHeight: 64,
+                    ),
+                    child: Image.asset(
+                      'assets/images/icons/calendar.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                   title: Text(
                       '${log.created.year}-${log.created.month}-${log.created.day}'),
-                  leading: Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 0, vertical: 4),
-                    child: Image.asset('assets/images/icons/calendar.png'),
-                  ),
-                  trailing: Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                  subtitle: Text(
+                      'Taste: ${log.ratingTaste}\nProcessability: ${log.ratingProcessability}, Fluffyness: ${log.ratingFluffyness}'),
+                  // trailing: Text(
+                  //     'Total rating: ${((log.ratingTaste + log.ratingProcessability + log.ratingFluffyness) / 3).toStringAsFixed(1)}'),
+                  trailing: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      minWidth: 44,
+                      minHeight: 44,
+                      maxWidth: 64,
+                      maxHeight: 64,
+                    ),
+                    child: Column(
                       children: [
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 4, vertical: 2),
-                          child: Text(log.ratingNotes.toString()),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 4, vertical: 2),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                'assets/images/icons/roller.png',
-                                width: 24,
-                              ),
-                              Text(log.ratingProcessability.toString()),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 4, vertical: 2),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                'assets/images/icons/ferment.png',
-                                width: 24,
-                              ),
-                              Text(log.ratingFluffyness.toString()),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 4, vertical: 2),
-                          child: Column(
-                            children: [
-                              Image.asset(
-                                'assets/images/icons/taste.png',
-                                width: 24,
-                              ),
-                              Text(log.ratingTaste.toString()),
-                            ],
-                          ),
-                        ),
-                        // Column(
-                        //   children: [
-                        //     Image.asset(
-                        //       'assets/images/icons/pencil.png',
-                        //       width: 32,
-                        //     ),
-                        //     Text(log.ratingNotes.toString()),
-                        //   ],
-                        // ),
+                        const Icon(Icons.sports_score),
+                        Text(((log.ratingTaste +
+                                    log.ratingProcessability +
+                                    log.ratingFluffyness) /
+                                3)
+                            .toStringAsFixed(1)),
                       ],
                     ),
                   ),
+                  isThreeLine: true,
                   onTap: () {
-                    // Navigate to the details page. If the user leaves and returns to
-                    // the app after it has been killed while running in the
-                    // background, the navigation stack is restored.
-                    // Navigator.pushNamed(context, RecipeDetailView.routeName,
-                    //     arguments: RecipeDetailViewArguments(log));
                     print('"Move to Log Detail View" Placeholder Message');
                   },
                 );
@@ -155,7 +119,7 @@ class _State extends State<LogsItemListView> {
             ),
           );
         } else {
-          return CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );
