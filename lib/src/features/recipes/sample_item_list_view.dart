@@ -106,7 +106,7 @@ class _State extends State<SampleItemListView> {
             ),
           );
         } else {
-          return CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );
