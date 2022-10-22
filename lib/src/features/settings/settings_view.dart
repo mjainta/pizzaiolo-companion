@@ -99,6 +99,17 @@ class SettingsView extends StatelessWidget {
                 'assets/images/icons/calendar.png',
               ],
             ),
+            const Divider(
+              height: 4,
+              thickness: 0,
+            ),
+            const IconAttribution(
+              authorName: 'photo3idea-studio',
+              authorUrl: 'https://www.flaticon.com/authors/photo3idea-studio',
+              iconPaths: [
+                'assets/images/icons/recipe.png',
+              ],
+            ),
           ],
         ),
       ),
