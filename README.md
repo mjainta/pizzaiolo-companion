@@ -33,6 +33,7 @@ images](https://flutter.dev/docs/development/ui/assets-and-images#resolution-awa
 - [roller.png](assets/images/icons/roller.png): https://www.flaticon.com/free-icon/roller_4605536
 - [taste.png](assets/images/icons/taste.png): https://www.flaticon.com/free-icon/taste_4785959
 - [pencil.png](assets/images/icons/pencil.png): https://www.flaticon.com/free-icon/pencil_3075908
+- [recipe.png](assets/images/icons/recipe.png): https://www.flaticon.com/free-icon/recipe_3565418
 
 ## Localization
 
