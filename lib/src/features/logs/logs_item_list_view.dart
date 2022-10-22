@@ -3,15 +3,12 @@ import 'package:pizzaiolo_companion/src/classes/log.dart';
 import 'package:pizzaiolo_companion/src/features/logs/log_tile.dart';
 import 'package:pizzaiolo_companion/src/features/recipes/recipe_add_view.dart';
 import 'package:pizzaiolo_companion/src/services/repository.dart';
-import 'package:pocketbase/pocketbase.dart';
 
 import '../settings/settings_controller.dart';
-import '../settings/settings_view.dart';
 
 class LogsItemListView extends StatefulWidget {
   const LogsItemListView({
     super.key,
-    this.items = const [],
     required this.settingsController,
     required this.repository,
   });
@@ -20,8 +17,6 @@ class LogsItemListView extends StatefulWidget {
   final Repository repository;
 
   static const routeName = '/log/list';
-
-  final List<RecordModel> items;
 
   @override
   _State createState() => _State();
@@ -37,22 +32,6 @@ class _State extends State<LogsItemListView> {
         if (snapshot.hasData) {
           logs = snapshot.data;
           return Scaffold(
-            appBar: AppBar(
-              title: const Text('Recipes'),
-              actions: [
-                IconButton(
-                  icon: const Icon(Icons.settings),
-                  onPressed: () async {
-                    // Navigate to the settings page. If the user leaves and returns
-                    // to the app after it has been killed while running in the
-                    // background, the navigation stack is restored.
-                    Navigator.restorablePushNamed(
-                        context, SettingsView.routeName);
-                  },
-                ),
-              ],
-            ),
-
             // To work with lists that may contain a large number of items, it’s best
             // to use the ListView.builder constructor.
             //
