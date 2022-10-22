@@ -8,8 +8,8 @@ import 'package:pocketbase/pocketbase.dart';
 import '../settings/settings_controller.dart';
 import 'recipe_detail_view.dart';
 
-class SampleItemListView extends StatefulWidget {
-  const SampleItemListView({
+class RecipeListView extends StatefulWidget {
+  const RecipeListView({
     super.key,
     this.items = const [],
     required this.settingsController,
@@ -27,7 +27,7 @@ class SampleItemListView extends StatefulWidget {
   _State createState() => _State();
 }
 
-class _State extends State<SampleItemListView> {
+class _State extends State<RecipeListView> {
   @override
   Widget build(BuildContext context) {
     List<Recipe>? myItems = [];
@@ -47,7 +47,7 @@ class _State extends State<SampleItemListView> {
               // Providing a restorationId allows the ListView to restore the
               // scroll position when a user leaves and returns to the app after it
               // has been killed while running in the background.
-              restorationId: 'sampleItemListView',
+              restorationId: 'recipeListView',
               itemCount: myItems!.length,
               itemBuilder: (BuildContext context, int index) {
                 final recipe = myItems![index];

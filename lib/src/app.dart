@@ -5,7 +5,7 @@ import 'package:pizzaiolo_companion/src/features/home/home_view.dart';
 import 'package:pizzaiolo_companion/src/features/logs/logs_item_list_view.dart';
 import 'package:pizzaiolo_companion/src/features/recipes/recipe_add_view.dart';
 import 'package:pizzaiolo_companion/src/features/recipes/recipe_detail_view.dart';
-import 'package:pizzaiolo_companion/src/features/recipes/sample_item_list_view.dart';
+import 'package:pizzaiolo_companion/src/features/recipes/recipe_list_view.dart';
 import 'package:pizzaiolo_companion/src/features/settings/settings_controller.dart';
 import 'package:pizzaiolo_companion/src/features/settings/settings_view.dart';
 
@@ -83,7 +83,7 @@ class MyApp extends StatelessWidget {
                     return LogsItemListView(
                         settingsController: settingsController,
                         repository: repository);
-                  case SampleItemListView.routeName:
+                  case RecipeListView.routeName:
                   default:
                     return HomeView(
                       settingsController: settingsController,

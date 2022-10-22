@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizzaiolo_companion/src/features/logs/logs_item_list_view.dart';
-import 'package:pizzaiolo_companion/src/features/recipes/sample_item_list_view.dart';
+import 'package:pizzaiolo_companion/src/features/recipes/recipe_list_view.dart';
 import 'package:pizzaiolo_companion/src/features/settings/settings_controller.dart';
 import 'package:pizzaiolo_companion/src/features/settings/settings_view.dart';
 import 'package:pizzaiolo_companion/src/services/repository.dart';
@@ -86,7 +86,7 @@ class _HomeViewState extends State<HomeView>
             repository: widget.repository,
             settingsController: widget.settingsController,
           ),
-          SampleItemListView(
+          RecipeListView(
             settingsController: widget.settingsController,
             repository: widget.repository,
           ),
