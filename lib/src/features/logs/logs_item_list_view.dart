@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pizzaiolo_companion/src/classes/log.dart';
+import 'package:pizzaiolo_companion/src/features/logs/log_add_view.dart';
 import 'package:pizzaiolo_companion/src/features/logs/log_tile.dart';
-import 'package:pizzaiolo_companion/src/features/recipes/recipe_add_view.dart';
 import 'package:pizzaiolo_companion/src/services/repository.dart';
 
 import '../settings/settings_controller.dart';
@@ -51,7 +51,7 @@ class _State extends State<LogsItemListView> {
             ),
             floatingActionButton: FloatingActionButton(
               onPressed: () {
-                Navigator.restorablePushNamed(context, RecipeAddView.routeName);
+                Navigator.restorablePushNamed(context, LogAddView.routeName);
               },
               child: const Icon(Icons.add),
             ),

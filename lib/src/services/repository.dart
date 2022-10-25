@@ -88,4 +88,30 @@ class Repository {
 
     return logs;
   }
+
+  void addLog(Log log) async {
+    // final body = <String, dynamic>{
+    //   'pizza_recipes': recipe.id,
+    //   'poolish_rest_hr': log.poolishRestHr,
+    //   'ball_no_multiplier': log.ballNoMultiplier,
+    //   'notable_changes': log.notableChanges,
+    //   'room_temperature': log.roomTemperature,
+    //   'rating_processability': log.ratingProcessability,
+    //   'rating_fluffyness': log.ratingFluffyness,
+    //   'rating_taste': log.ratingTaste,
+    //   'rating_notes': log.ratingNotes,
+    // };
+    final body = <String, dynamic>{
+      'pizza_recipes': '0kk48zgr0t9qyfn',
+      'poolish_rest_hr': 18,
+      'ball_no_multiplier': 1,
+      'notable_changes': 'changes',
+      'room_temperature': 'medium',
+      'rating_processability': 2,
+      'rating_fluffyness': 3,
+      'rating_taste': 1,
+      'rating_notes': 'super duper',
+    };
+    await client.records.create('pizza_logs', body: body);
+  }
 }
