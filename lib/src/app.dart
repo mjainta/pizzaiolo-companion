@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:pizzaiolo_companion/src/features/home/home_view.dart';
+import 'package:pizzaiolo_companion/src/features/logs/log_add_view.dart';
 import 'package:pizzaiolo_companion/src/features/logs/logs_item_list_view.dart';
 import 'package:pizzaiolo_companion/src/features/recipes/recipe_add_view.dart';
 import 'package:pizzaiolo_companion/src/features/recipes/recipe_detail_view.dart';
@@ -79,6 +80,8 @@ class MyApp extends StatelessWidget {
                     return const RecipeDetailView();
                   case RecipeAddView.routeName:
                     return RecipeAddView(repository: repository);
+                  case LogAddView.routeName:
+                    return LogAddView(repository: repository);
                   case LogsItemListView.routeName:
                     return LogsItemListView(
                         settingsController: settingsController,
