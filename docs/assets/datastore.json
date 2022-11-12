@@ -1,0 +1,22 @@
+{
+  "recipes": [
+    {
+      "id": "recipe-123",
+      "name": "Vitos crazy recipe",
+      "ingredients": "Poolish:\n300gr flour\n300gr water\n5gr yeast\n5gr honey\n\nDough:\n300gr flour\n150ml water\n10gr salt",
+      "steps": "1. Make the poolish\n2. Put the poolish into the fridge for 16h-24h\n3. Make big dough ball\n4. Rest for 1h\n5. Make small dough balls\n6. Rest for 1h\n7. You are good to go!"
+    }
+  ],
+  "journal": [
+    {
+      "id": "journal-456",
+      "recipe_id": "recipe-123",
+      "rating": "\nTaste: ⭐⭐⭐⭐\nDough: ⭐⭐⭐⭐",
+      "images": [
+        "journal_images/2022_11_11-abc_123.png",
+        "journal_images/2022_11_11-abc_456.png",
+        "journal_images/2022_11_11-abc_789.png"
+      ]
+    }
+  ]
+}
