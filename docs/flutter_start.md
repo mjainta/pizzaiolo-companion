@@ -1,4 +1,4 @@
-# pizzaiolo_companion
+# Pizzaiolo companion
 
 ## Getting Started
 

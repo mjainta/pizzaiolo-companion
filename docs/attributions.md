@@ -1,5 +1,7 @@
 # Attributions
 
+Thanks to the external creators who helped developing app by providing assets and the like.
+
 ## Icon sources
 
 - [flour.png](../assets/images/icons/flour.png): https://www.flaticon.com/free-icon/flour_1182154
