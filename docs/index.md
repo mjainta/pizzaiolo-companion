@@ -38,3 +38,8 @@ At stage 3, we want to connect data between devices, enabling:
 
 - Sharing of recipes, pictures, etc.
 - Using one users data on multiple devices
+
+## Attributions
+
+Thanks to the external creators who helped developing app by providing assets and the like.  
+[List of attributions](attributions.md)
